@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1 class="title">GSPL MATCH SCHEDULE</h1>
+
+    {% for match in matches %}
+
+    <div class="match-card">
+
+        <h2>{{ match.team1 }} VS {{ match.team2 }}</h2>
+
+        <p>Date : {{ match.match_date }}</p>
+
+        <p>Time : {{ match.time }}</p>
+
+        <p>Venue : {{ match.venue }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<style>
+
+.container{
+    padding:140px 40px 40px 40px;
+    background:black;
+    min-height:100vh;
+    color:white;
+}
+
+.title{
+    text-align:center;
+    color:gold;
+    margin-bottom:40px;
+    font-size:50px;
+}
+
+.match-card{
+    background:#111;
+    padding:25px;
+    margin-bottom:20px;
+    border-radius:15px;
+    border:1px solid gold;
+}
+
+.match-card h2{
+    color:gold;
+}
+
+</style>
+
+{% endblock %}

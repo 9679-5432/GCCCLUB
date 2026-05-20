@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCC CLUB</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial;
+        }
+  .whatsapp-btn img{
+    width:35px;
+    height:35px;
+}
+.whatsapp-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    
+    background:#25D366;
+    color:white;
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.4);
+
+    z-index:9999;
+
+    transition:0.3s;
+}
+
+.whatsapp-btn:hover{
+    transform:scale(1.1);
+}
+
+.whatsapp-btn:hover{
+    transform:scale(1.1);
+}
+  body{
+    margin:0;
+    background:black;
+    font-family:Arial;
+    color:white;
+}
+
+         /* NAVBAR */
+
+nav{
+    width:100%;
+    background:#0a0a0a;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+
+    padding:20px 10px;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    z-index:1000;
+
+    border-bottom:2px solid gold;
+}
+
+        .logo{
+            font-size:30px;
+            color:gold;
+            font-weight:bold;
+        }
+       nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:30px;
+}
+
+nav ul li a,
+nav ul li a:visited,
+nav ul li a:active{
+    text-decoration:none !important;
+    color:white !important;
+    font-size:18px;
+    font-weight:bold;
+    transition:0.3s;
+}
+nav ul li a:hover{
+    color:gold !important;
+}
+footer{
+    background:#111;
+    color:#aaa;
+    text-align:center;
+    padding:25px;
+    font-size:18px;
+}
+
+@media(max-width:768px){
+
+    .hero-content h1{
+        font-size:55px;
+    }
+
+    .hero-content h2{
+        font-size:40px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    nav ul li{
+        margin:10px;
+    }
+}
+
+</style>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <h1 class="logo">GHANARAMPUR CRICKET CLUB</h1>
+
+    <div class="menu-toggle" id="mobile-menu">
+        ☰
+    </div>
+
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="{% url 'gspl' %}">GSPL</a>
+        <a href="/gallery/">Gallery</a>
+        <a href="/members/">Members</a>
+        <a href="{% url 'notice' %}">Notice</a>
+        <a href="/contact/">About</a>
+        
+    </div>
+
+</nav>
+
+    <!-- MAIN CONTENT -->
+
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- FOOTER -->
+
+    <a href="https://wa.me/919679295970" class="whatsapp-btn" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+</a>
+<script src="{% static 'js/script.js' %}"></script>
+
+<script>
+
+const mobileMenu = document.getElementById("mobile-menu");
+const navLinks = document.getElementById("nav-links");
+
+mobileMenu.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+});
+
+</script>
+
+<footer class="footer">
+
+    <h2>Connect With GCC CLUB</h2>
+
+    <div class="social-icons">
+
+        <a href="https://www.facebook.com/share/1CdAvmPVoA/" target="_blank">
+            <i class="fab fa-facebook"></i>
+        </a>
+
+        <a href="https://whatsapp.com/channel/0029VbD0ReG3AzNZ6YTWEO0I" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+    </div>
+
+    <p>
+        © 2026 GCC CLUB | All Rights Reserved | diganta@18
+    </p>
+
+</footer>
+
+</body>
+</html>

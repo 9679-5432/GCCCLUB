@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="results-container">
+
+    <h1 class="results-title">GSPL RESULTS</h1>
+
+    <div class="results-grid">
+
+        {% for result in results %}
+
+        <div class="result-card">
+
+            <div class="match-badge">
+                {{ result.match_name }}
+            </div>
+
+            <div class="result-info">
+                <p><span>🏆 Winner:</span> {{ result.winner }}</p>
+
+                <p><span>⭐ Man of the Match:</span> {{ result.man_of_the_match }}</p>
+
+                <p><span>📊 Score:</span> {{ result.score }}</p>
+
+                <p><span>🎯 Overs:</span> {{ result.overs }}</p>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<style>
+
+.results-container{
+    background:black;
+    min-height:100vh;
+    padding:130px 15px 40px;
+}
+
+.results-title{
+    text-align:center;
+    color:gold;
+    font-size:55px;
+    margin-bottom:40px;
+    font-weight:900;
+}
+
+.results-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.result-card{
+    background:#111;
+    border:2px solid gold;
+    border-radius:20px;
+    padding:25px;
+    transition:0.3s;
+    box-shadow:0 0 10px rgba(255,215,0,0.2);
+}
+
+.result-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px gold;
+}
+
+.match-badge{
+    background:gold;
+    color:black;
+    font-size:28px;
+    font-weight:bold;
+    padding:12px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.result-info p{
+    color:white;
+    font-size:20px;
+    margin:15px 0;
+    line-height:1.5;
+}
+
+.result-info span{
+    color:gold;
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+
+.results-title{
+    font-size:42px;
+}
+
+.result-card{
+    padding:20px;
+}
+
+.match-badge{
+    font-size:22px;
+}
+
+.result-info p{
+    font-size:18px;
+}
+
+}
+
+</style>
+
+{% endblock %}

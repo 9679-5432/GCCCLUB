@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="teams-container">
+
+    {% for team in teams %}
+
+    <div class="team-card">
+
+        <div class="team-logo">
+            <img src="{{ team.logo.url }}" alt="{{ team.name }}">
+        </div>
+
+        <h2>{{ team.name }}</h2>
+
+        <p><b>Captain:</b> {{ team.captain }}</p>
+
+        <p><b>Owner:</b> {{ team.owner }}</p>
+
+        <p>{{ team.description }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

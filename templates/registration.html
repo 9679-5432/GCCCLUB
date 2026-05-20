@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSPL Registration</title>
+
+    <style>
+        .registration-section{
+    padding:140px 20px;
+    background:#000;
+    min-height:100vh;
+    text-align:center;
+}
+
+.registration-section h1{
+    color:gold;
+    font-size:60px;
+    margin-bottom:40px;
+}
+
+.registration-form{
+    max-width:700px;
+    margin:auto;
+    background:#111;
+    padding:40px;
+    border-radius:20px;
+    border:2px solid gold;
+}
+
+.registration-form input,
+.registration-form textarea{
+    width:100%;
+    padding:15px;
+    margin:15px 0;
+    background:#222;
+    border:none;
+    border-radius:10px;
+    color:white;
+    font-size:18px;
+}
+
+.registration-form label{
+    color:white;
+    display:block;
+    text-align:left;
+    margin-top:15px;
+}
+
+.registration-form button{
+    width:100%;
+    padding:15px;
+    margin-top:25px;
+    background:gold;
+    color:black;
+    border:none;
+    border-radius:10px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.registration-form button:hover{
+    background:white;
+}
+
+        body{
+            background:black;
+            color:white;
+            font-family:Arial;
+        }
+
+        .form-box{
+            width:400px;
+            margin:50px auto;
+            background:#111;
+            padding:30px;
+            border-radius:15px;
+        }
+
+        h1{
+            text-align:center;
+            color:gold;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            border:none;
+            border-radius:8px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:20px;
+            background:gold;
+            border:none;
+            font-size:18px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+    .success-message{
+    background-color:green !important;
+    color:white !important;
+    padding:12px !important;
+    margin:15px auto !important;
+    width:90% !important;
+    max-width:450px !important;
+    text-align:center !important;
+    border-radius:8px !important;
+    font-weight:bold !important;
+    font-size:18px !important;
+    display:block !important;
+}
+
+select{
+    width:100%;
+    height:70px;
+    padding:0 18px;
+    background:#1e1e1e;
+    color:white;
+    border:none;
+    border-radius:12px;
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+    </style>
+
+</head>
+<body>
+
+<section class="registration-section">
+
+    <h1>GSPL Registration </h1>
+
+   {% if messages %}
+    {% for message in messages %}
+        <div class="success-message">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+    <form method="POST" enctype="multipart/form-data" class="registration-form">
+
+        {% csrf_token %}
+
+        <input type="text" name="player_name" placeholder="Player Name" required>
+
+        <input type="number" name="age" placeholder="Age" required>
+
+        <input type="text" name="phone" placeholder="Phone Number" required>
+
+        <select name="role" required>
+    <option value="" disabled selected>
+    Select Player Role
+   </option>
+    <option value="Batsman">Batsman</option>
+    <option value="Bowler">Bowler</option>
+    <option value="Batting All-rounder">Batting All-rounder</option>
+    <option value="Bowling All-rounder">Bowling All-rounder</option>
+       </select>
+
+        <textarea name="address" placeholder="Address" required></textarea>
+
+        <label>Player Photo (Photo Should be clear)</label>
+        <input type="file" name="photo" required>
+
+        <label>Upload your Aadhar Card Image</label>
+        <input type="file" name="aadhar_card" required>
+
+        <div class="payment-box">
+
+   <div class="registration-payment">
+
+    <h3 style="color: yellow;">
+    Please Pay Rs 100 in the Below QR Code
+    </h3>
+
+    <img
+        src="/media/payment/payment QR.jpeg"
+        alt="QR Code"
+        style="
+            width:100%;
+            max-width:280px;
+            height:auto;
+            display:block;
+            margin:20px auto;
+            border-radius:12px;
+        "
+    >
+
+    <p>Scan QR and complete registration payment.</p>
+
+</div>
+
+
+
+        <label>Payment Screenshot</label>
+        <input type="file" name="payment_screenshot" required>
+
+        <button type="submit">Register Now</button>
+
+    </form>
+
+</section>
+
+<script>
+
+window.onload = function () {
+
+    const successMessage = document.querySelector('.success-message');
+
+    if (successMessage) {
+
+        setTimeout(function () {
+
+            successMessage.style.display = "none";
+
+            window.history.replaceState({}, document.title, window.location.pathname);
+
+        }, 4000);
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>

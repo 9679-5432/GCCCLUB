@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+    .gallery-section{
+        text-align:center;
+        padding-top:120px;
+        min-height:70vh;
+    }
+
+    .gallery-section h1{
+        color:gold;
+        font-size:80px;
+        margin-bottom:20px;
+    }
+
+    .gallery-section p{
+        color:white;
+        font-size:30px;
+        margin-bottom:60px;
+        font-weight:bold;
+    }
+
+    .season-buttons{
+        display:flex;
+        justify-content:center;
+        gap:20px;
+        flex-wrap:wrap;
+    }
+
+    .season-buttons a{
+        text-decoration:none;
+    }
+
+    .season-buttons button{
+        background:black;
+        color:white;
+        border:2px solid gold;
+        border-radius:30px;
+        padding:14px 35px;
+        font-size:22px;
+        font-weight:bold;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .season-buttons button:hover{
+        background:gold;
+        color:black;
+        transform:scale(1.05);
+    }
+
+</style>
+
+<section class="gallery-section">
+
+    <h1>GALLERY</h1>
+
+    <p>Ghanarampur Cricket Club Memories</p>
+
+    <div class="season-buttons">
+
+        {% for season in seasons %}
+
+        <a href="/gallery/{{ season.id }}/">
+
+            <button>{{ season.name }}</button>
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

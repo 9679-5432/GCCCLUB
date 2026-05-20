@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+    .countdown-section{
+    padding:80px 20px;
+    text-align:center;
+    background:#000;
+}
+
+.countdown-section h2{
+    font-size:55px;
+    color:gold;
+    margin-bottom:40px;
+}
+
+.countdown-box{
+    max-width:700px;
+    margin:auto;
+    background:#111;
+    padding:40px;
+    border:2px solid gold;
+    border-radius:20px;
+}
+
+.countdown-box h3{
+    font-size:40px;
+    color:white;
+    margin-bottom:20px;
+}
+
+.countdown-box p{
+    font-size:24px;
+    color:#ccc;
+}
+
+.hero{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('/media/stadium.png');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero-content h1{
+    font-size:90px;
+    color:gold;
+    margin-bottom:20px;
+}
+
+.hero-content h2{
+    font-size:65px;
+    color:white;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:30px;
+    color:white;
+}
+.announcement-section{
+    background:gold;
+    color:black;
+    padding:15px;
+    font-size:22px;
+    font-weight:bold;
+}
+<section class="countdown-section">
+    <h2>NEXT GSPL MATCH</h2>
+
+    <div class="countdown-box">
+        <h3>Wicket Warriors VS Athletics Angel</h3>
+        <p>24 June 2026 | 8:00 AM</p>
+    </div>
+</section>
+</style>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>GHANARAMPUR CRICKET CLUB</h1>
+
+        <p>
+            Official Website of GCC CLUB & GSPL Tournament
+        </p>
+
+    </div>
+
+</section>
+
+
+{% comment %} <div class="announcement-section">
+
+    <marquee class="announcement-text">
+
+        {% for news in announcements %}
+
+             {{ news.title }} &nbsp;&nbsp;&nbsp;&nbsp;
+
+        {% endfor %}
+
+    </marquee>
+
+</div> {% endcomment %}
+
+{% comment %} <div class="announcement-section">
+
+    <marquee class="announcement-text">
+
+        🔥 GSPL Auction Starting Soon | Registration Open Now | Welcome To GCC CLUB 🔥
+
+    </marquee>
+
+
+</div> {% endcomment %}
+<div class="announcement-section">
+    <marquee class="announcement-text">
+
+        {% for news in announcements %}
+
+            {{ news.title }} 🔥
+
+        {% empty %}
+
+            We are providing all announcement here  🔥
+
+        {% endfor %}
+
+    </marquee>
+</div>
+
+<section class="sponsor-section">
+
+    <h2>OUR SPONSORS</h2>
+
+    <div class="sponsor-container">
+
+    {% for sponsor in sponsors %}
+
+    <div class="sponsor-card">
+        <img src="{{ sponsor.image.url }}" alt="">
+        <h3>{{ sponsor.name }}</h3>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</section>
+
+
+
+{% endblock %}
+

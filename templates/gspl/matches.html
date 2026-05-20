@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSPL Matches</title>
+
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            background:black;
+            color:white;
+            font-family:Arial;
+        }
+
+        .navbar{
+            background:#111;
+            padding:20px;
+            text-align:center;
+        }
+
+        .navbar a{
+            color:white;
+            text-decoration:none;
+            margin:15px;
+            font-size:18px;
+        }
+
+        h1{
+            text-align:center;
+            color:gold;
+            margin-top:40px;
+            font-size:60px;
+        }
+
+        .match-card{
+            background:#111;
+            width:80%;
+            margin:30px auto;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+        }
+
+        .teams{
+            font-size:35px;
+            color:gold;
+            margin-bottom:20px;
+        }
+
+        .details{
+            font-size:20px;
+            line-height:40px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/gspl/">GSPL</a>
+        <a href="/gspl/teams/">Teams</a>
+        <a href="/gspl/matches/">Matches</a>
+    </div>
+
+    <h1>MATCH SCHEDULE</h1>
+
+    {% for match in matches %}
+
+    <div class="match-card">
+
+        <div class="teams">
+            {{ match.team1 }} VS {{ match.team2 }}
+        </div>
+
+        <div class="details">
+            📅 {{ match.match_date }} <br>
+            🕒 {{ match.time }} <br>
+            📍 {{ match.venue }}
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</body>
+</html>

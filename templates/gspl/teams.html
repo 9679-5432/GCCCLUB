@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+    .teams-section{
+        padding:150px 50px;
+    }
+
+    .teams-title{
+        text-align:center;
+        font-size:60px;
+        color:gold;
+        margin-bottom:50px;
+    }
+
+    .teams-container{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+        gap:30px;
+    }
+
+    .team-card{
+        background:#111;
+        padding:20px;
+        border-radius:15px;
+        text-align:center;
+    }
+
+    .team-card img{
+        width:200px;
+        height:200px;
+        object-fit:cover;
+        border-radius:50%;
+    }
+
+    .team-card h2{
+        margin-top:20px;
+        color:gold;
+    }
+
+    .team-card p{
+        margin-top:10px;
+        font-size:20px;
+    }
+
+</style>
+
+<section class="teams-section">
+
+    <h1 class="teams-title">
+        GSPL TEAMS
+    </h1>
+
+    <div class="teams-container">
+
+        {% for team in teams %}
+
+        <div class="team-card">
+
+            <img src="{{ team.logo.url }}" alt="">
+
+            <h2>{{ team.name }}</h2>
+
+            <p>Captain: {{ team.captain }}</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

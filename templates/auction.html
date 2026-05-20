@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="auction-page">
+
+    <h1>GSPL AUCTION TOP 10 PLAYERS</h1>
+
+    <div class="auction-container">
+
+        {% for player in players %}
+
+        <div class="auction-card">
+
+            {% if player.player_image %}
+                <img src="{{ player.player_image.url }}" class="auction-image">
+            {% endif %}
+
+            <h2>{{ player.player_name }}</h2>
+
+            <p>Base Price: ₹{{ player.base_price }}</p>
+
+            {% if player.is_sold %}
+
+                <h3 class="sold-team">
+                    SOLD TO {{ player.team_name }}
+                </h3>
+
+                <h2 class="sold-price">
+                    ₹{{ player.sold_price }}
+                </h2>
+
+            {% else %}
+
+                <h3 class="unsold">
+                    UNSOLD
+                </h3>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

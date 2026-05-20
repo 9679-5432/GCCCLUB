@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+.notice-section{
+    padding:100px 20px;
+    text-align:center;
+}
+
+.notice-section h1{
+    color:gold;
+    font-size:70px;
+    margin-bottom:50px;
+}
+
+.notice-container{
+    max-width:900px;
+    margin:auto;
+}
+
+.notice-card{
+    background:#111;
+    border:2px solid gold;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:30px;
+}
+
+.notice-card h2{
+    color:gold;
+    margin-bottom:15px;
+}
+
+.notice-card a{
+    display:inline-block;
+    padding:12px 25px;
+    border:2px solid gold;
+    border-radius:30px;
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.notice-card a:hover{
+    background:gold;
+    color:black;
+}
+
+.notice-date{
+    color:#aaa;
+    margin-top:10px;
+}
+
+</style>
+
+<section class="notice-section">
+
+    <h1>NOTICE BOARD</h1>
+
+    <div class="notice-container">
+
+        {% for notice in notices %}
+
+        <div class="notice-card">
+
+            <h2>{{ notice.title }}</h2>
+
+            <a href="{{ notice.file.url }}" target="_blank">
+                Open Notice
+            </a>
+
+            <div class="notice-date">
+                {{ notice.uploaded_at }}
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

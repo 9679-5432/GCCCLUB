@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="players-page">
+
+    <div class="players-header">
+
+        {% comment %} <h1>GCC CLUB PLAYERS</h1> {% endcomment %}
+
+        <p>
+            Official registered players of GSPL Tournament
+        </p>
+
+    </div>
+
+    <div class="players-container">
+
+        {% for player in players %}
+
+        <div class="player-card">
+
+            <img src="{{ player.photo.url }}" alt="player">
+
+            <div class="player-info">
+
+                <h2>{{ player.name }}</h2>
+
+                <p>{{ player.role }}</p>
+
+                <p>Age : {{ player.age }}</p>
+
+                <p>{{ player.phone }}</p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

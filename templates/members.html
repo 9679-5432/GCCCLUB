@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+    .members-section{
+        padding:150px 50px;
+    }
+
+    .members-title{
+        text-align:center;
+        font-size:60px;
+        color:gold;
+        margin-bottom:50px;
+    }
+
+    .members-container{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+        gap:30px;
+    }
+
+    .member-card{
+        background:#111;
+        padding:20px;
+        border-radius:15px;
+        text-align:center;
+        transition:0.3s;
+    }
+
+    .member-card:hover{
+        transform:translateY(-10px);
+    }
+
+    .member-card img{
+        width:100%;
+        height:300px;
+        object-fit:cover;
+        border-radius:10px;
+    }
+
+    .member-card h2{
+        margin-top:20px;
+        color:gold;
+    }
+
+    .member-card p{
+        margin-top:10px;
+        font-size:18px;
+    }
+
+</style>
+
+<section class="members-section">
+
+    <h1 class="members-title">
+        GCC CLUB MEMBERS
+    </h1>
+
+    <div class="members-container">
+
+        {% for member in members %}
+
+        <div class="member-card">
+
+            <img src="{{ member.image.url }}" alt="">
+
+            <h2>{{ member.name }}</h2>
+
+            <p>{{ member.role }}</p>
+
+            <p>{{ member.phone }}</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

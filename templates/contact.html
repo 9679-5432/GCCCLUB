@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+.about-section{
+    min-height: 70vh;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.about-section h1{
+    color: gold;
+    font-size: 70px;
+    margin-bottom: 40px;
+}
+
+.about-box{
+    max-width: 900px;
+    margin: auto;
+    background: #111;
+    border: 2px solid gold;
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    line-height: 1.9;
+    font-size: 22px;
+    box-shadow: 0 0 20px rgba(255,215,0,0.2);
+}
+
+.about-box span{
+    color: gold;
+    font-weight: bold;
+}
+
+@media(max-width:768px){
+
+    .about-section h1{
+        font-size: 45px;
+    }
+
+    .about-box{
+        font-size: 18px;
+        padding: 25px;
+    }
+
+}
+
+</style>
+
+<section class="about-section">
+
+    <h1>ABOUT GCC CLUB</h1>
+
+    <div class="about-box">
+
+        <p>
+            <span>Ghanarampur Cricket Club (GCC)</span> is one of the most passionate and energetic cricket clubs from Ghanarampur, Bandipur, West Medinipur.
+        </p>
+
+        <p>
+            Our club regularly organizes multiple sports events, especially cricket tournaments, to encourage young talents and promote sports culture in our area.
+        </p>
+
+        <p>
+            The biggest tournament organized by GCC is the 
+            <span>GSPL (Ghanarampur Super Premier League)</span>, 
+            an exciting auction-based cricket tournament featuring talented players, competitive teams, and huge local support.
+        </p>
+
+        <p>
+            GCC is not just a cricket club — it is a family of sports lovers working together to create opportunities, unity, discipline, and entertainment through cricket.
+        </p>
+
+        <p>
+            We aim to take rural cricket talent to a bigger level and continue building a strong sports community for the future.
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+    .gspl-hero{
+    padding: 140px 20px 100px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+    .gspl-hero h1{
+    font-size:100px;
+    color:gold;
+    margin-bottom:10px;
+}
+
+    .gspl-hero p{
+    font-size:30px;
+    margin-top:10px;
+    margin-bottom:35px;
+}
+</style>
+
+<section class="gspl-hero">
+
+    <div>
+
+        <h1>GSPL</h1>
+
+        <p>
+            <h2>Ghanarampur Super Premier League</h2>
+        </p>
+        <div class="gspl-navbar">
+
+            <a href="/registration/">Registration</a>
+            <a href="/players/">Players</a>
+            <a href="/teams/">Teams</a>
+            <a href="/matches/">Matches</a>
+            <a href="/points-table/">Points Table</a>
+            <a href="/auction/">Auction</a>
+            <a href="/results/">Results</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}
