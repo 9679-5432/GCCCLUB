@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+import requests
 from .models import Team, Player, Match, Member, PointsTable,Result
 from .models import Match
 from .forms import PlayerForm
@@ -62,6 +63,20 @@ def registration(request):
                 role=reg.role,
                 photo=reg.photo
             )
+            data = {
+                "name": reg.player_name,
+                "phone": reg.phone_number,
+                "email": reg.email,
+                "address": reg.address,
+                "role": reg.role,
+                "photo": str(reg.photo.url) if reg.photo else "",
+                "aadhar": str(reg.aadhar.url) if reg.aadhar else "",
+                "payment": str(reg.payment_screenshot.url) if reg.payment_screenshot else "",
+            }
+
+            GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6uDQiv2bS7VeoU3m7a3bPxg5RrjuhNtHNyU1ErKuMKXV53ei8eVrtiBs4CT5q7o8H/exec"
+
+            requests.post(GOOGLE_SCRIPT_URL, json=data)
 
             messages.success(request, "Registration Successful!")
             return redirect('/registration/')
