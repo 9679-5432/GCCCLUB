@@ -789,3 +789,224 @@ body{
 .gallery-card img:hover{
     transform:scale(1.03);
 }
+
+/* ==========================================
+   Registration Details Page
+========================================== */
+
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.player-photo{
+    width:100%;
+    max-width:260px;
+    height:320px;
+    object-fit:cover;
+    border-radius:12px;
+    border:4px solid #f1f1f1;
+}
+
+.player-photo:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+}
+
+.document-photo{
+    width:100%;
+    max-width:100%;
+    height:auto;
+    max-height:250px;
+    object-fit:contain;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:5px;
+    background:#fff;
+    display:block;
+    margin:auto;
+}
+.info-table th{
+    width:30%;
+    white-space:nowrap;
+    background:#f8f9fa;
+    font-weight:600;
+}
+
+.info-table td{
+    font-weight:500;
+}
+
+.card{
+    border-radius:12px;
+}
+
+.document-photo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 18px rgba(0,0,0,.18);
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    width: 35%;
+    background: #f8f9fa;
+    color: #444;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.badge {
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 20px;
+}
+
+.btn-sm {
+    min-width: 90px;
+    margin: 4px;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 991px) {
+
+    .player-photo {
+        width: 180px;
+        height: 220px;
+    }
+
+    .table th {
+        width: 40%;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .card-body {
+        padding: 18px;
+    }
+
+    .player-photo {
+        width: 160px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .document-photo {
+        height: 180px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .table th,
+    .table td {
+        font-size: 14px;
+    }
+
+    .btn-sm {
+        width: 100%;
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .player-photo {
+        width: 150px;
+        height: 190px;
+    }
+
+    .document-photo {
+        height: 160px;
+    }
+
+    .table th {
+        width: 45%;
+        font-size: 13px;
+    }
+
+    .table td {
+        font-size: 13px;
+    }
+
+    .card-header {
+        font-size: 16px;
+    }
+
+}
+
+/* ===========================
+   Mobile Responsive
+=========================== */
+
+@media (max-width:768px){
+
+.container-fluid{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.card-body{
+    padding:12px;
+}
+
+.player-photo{
+    width:180px;
+    height:220px;
+    margin:auto;
+    display:block;
+}
+
+.document-photo{
+    width:100%;
+    height:auto;
+    max-height:220px;
+}
+
+.table-responsive{
+    overflow-x:auto;
+}
+
+.table{
+    font-size:14px;
+}
+
+.table th{
+    width:40%;
+    white-space:nowrap;
+}
+
+.btn-sm{
+    width:48%;
+    margin-top:8px;
+}
+
+.card-header h5{
+    font-size:16px;
+    margin:0;
+}
+
+}
+
+

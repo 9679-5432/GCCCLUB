@@ -116,6 +116,25 @@ footer{
     padding:25px;
     font-size:18px;
 }
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.club-logo{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #ffd700;
+}
+
+.logo{
+    color:#ffd700;
+    font-size:48px;
+    font-weight:700;
+}
 
 @media(max-width:768px){
 
@@ -151,7 +170,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <nav class="navbar">
 
-    <h1 class="logo">GHANARAMPUR CRICKET CLUB</h1>
+    <div class="logo-section">
+
+    <img src="{% static 'images/gspl_logo.jpg' %}" alt="GSPL Logo" class="club-logo">
+
+    <h1 class="logo">
+        GHANARAMPUR CRICKET CLUB
+    </h1>
+
+</div>
 
     <div class="menu-toggle" id="mobile-menu">
         ☰

@@ -29,15 +29,23 @@
 }
 
 .registration-form input,
-.registration-form textarea{
+.registration-form textarea,
+.registration-form select{
     width:100%;
-    padding:15px;
-    margin:15px 0;
-    background:#222;
+    padding:18px;
+    margin-bottom:20px;
     border:none;
     border-radius:10px;
+    background:#262626;
     color:white;
     font-size:18px;
+    outline:none;
+    box-sizing:border-box;
+}
+
+.registration-form select option{
+    background:#262626;
+    color:white;
 }
 
 .registration-form label{
@@ -136,7 +144,7 @@ select{
 
 <section class="registration-section">
 
-    <h1>GSPL Registration </h1>
+    <h1>GSPL Registration Season 3</h1>
 
    {% if messages %}
     {% for message in messages %}
@@ -149,22 +157,25 @@ select{
     <form method="POST" enctype="multipart/form-data" class="registration-form">
 
         {% csrf_token %}
+<input type="text" name="player_name" placeholder="Player Name" required>
 
-        <input type="text" name="player_name" placeholder="Player Name" required>
+<input type="number" name="age" placeholder="Age" required>
 
-        <input type="number" name="age" placeholder="Age" required>
+<select name="age_category" required>
+    <option value="" disabled selected>Select Age Category</option>
+    <option value="Under 20">Under 20</option>
+    <option value="Above 20">Above 20</option>
+</select>
 
-        <input type="text" name="phone" placeholder="Phone Number" required>
+<input type="text" name="phone" placeholder="Phone Number" required>
 
-        <select name="role" required>
-    <option value="" disabled selected>
-    Select Player Role
-   </option>
+<select name="role" required>
+    <option value="" disabled selected>Select Player Role</option>
     <option value="Batsman">Batsman</option>
     <option value="Bowler">Bowler</option>
     <option value="Batting All-rounder">Batting All-rounder</option>
     <option value="Bowling All-rounder">Bowling All-rounder</option>
-       </select>
+</select>
 
         <textarea name="address" placeholder="Address" required></textarea>
 

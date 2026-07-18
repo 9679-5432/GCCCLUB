@@ -9,6 +9,7 @@ from .forms import RegistrationForm
 from django.contrib import messages
 from .models import GallerySeason, GalleryImage
 from .models import Notice
+from .models import Registration, RegistrationSettings
 
 
 def home(request):
@@ -49,19 +50,34 @@ def contact(request):
 
 def registration(request):
 
-    if request.method == 'POST':
+    settings = RegistrationSettings.objects.first()
+
+    if settings is None:
+        settings = RegistrationSettings.objects.create()
+
+    if not settings.registration_open:
+        return render(request, "registration_closed.html")
+
+    print("Registration view called")
+
+    if request.method == "POST":
+        print("POST request received")
 
         form = RegistrationForm(request.POST, request.FILES)
 
         if form.is_valid():
+            print("Form is valid")
 
             reg = form.save()
 
             Player.objects.create(
                 name=reg.player_name,
                 age=reg.age,
+                phone=reg.phone,
                 role=reg.role,
-                photo=reg.photo
+                address=reg.address,
+                photo=reg.photo,
+                payment_screenshot=reg.payment_screenshot,
             )
             data = {
                 "name": reg.player_name,
@@ -78,18 +94,21 @@ def registration(request):
 
             requests.post(GOOGLE_SCRIPT_URL, json=data)
 
+            print("Player created successfully")
+
             messages.success(request, "Registration Successful!")
-            return redirect('/registration/')
+            return redirect("registration")
+
+        else:
+            print("FORM ERRORS:")
+            print(form.errors)
 
     else:
+        print("GET request")
 
         form = RegistrationForm()
 
-    return render(
-        request,
-        'registration.html',
-        {'form': form}
-    )
+    return render(request, "registration.html", {"form": form})
 
 
 def matches(request):
@@ -98,14 +117,15 @@ def matches(request):
 
     return render(request, 'matches.html', {'matches': matches})
 def players(request):
+    players = Registration.objects.filter(status="Approved").order_by("player_name")
 
-    all_players = Player.objects.all()
-
-    context = {
-        'players': all_players
-    }
-
-    return render(request, 'players.html', context)
+    return render(
+        request,
+        "players.html",
+        {
+            "players": players
+        }
+    )
 def teams(request):
 
     all_teams = Team.objects.all()

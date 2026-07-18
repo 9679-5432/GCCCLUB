@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 
 # TEAM MODEL
 
@@ -109,11 +110,30 @@ class GalleryImage(models.Model):
 
     def __str__(self):
         return self.title
+    
+STATUS_CHOICES = [
+    ("Pending", "Pending"),
+    ("Approved", "Approved"),
+    ("Rejected", "Rejected"),
+]
+
+
 class Registration(models.Model):
 
     player_name = models.CharField(max_length=100)
 
     age = models.IntegerField()
+
+    AGE_CATEGORY = [
+        ("Under 20", "Under 20"),
+        ("Above 20", "Above 20"),
+    ]
+
+    age_category = models.CharField(
+        max_length=20,
+        choices=AGE_CATEGORY,
+        default="Under 20"
+    )
 
     phone = models.CharField(max_length=15)
 
@@ -121,11 +141,43 @@ class Registration(models.Model):
 
     address = models.TextField()
 
-    photo = models.ImageField(upload_to='registrations/')
-    aadhar_card = models.ImageField(upload_to='aadhar/', blank=True, null=True)
-    payment_screenshot = models.ImageField(upload_to='payments/')
+    # Player photo (Images only)
+    photo = models.ImageField(
+        upload_to="registrations/",
+        validators=[
+            FileExtensionValidator(
+                allowed_extensions=["jpg", "jpeg", "png", "webp"]
+            )
+        ]
+    )
 
-    
+    # Aadhaar (Image or PDF)
+    aadhar_card = models.FileField(
+        upload_to="aadhar/",
+        validators=[
+            FileExtensionValidator(
+                allowed_extensions=["pdf", "jpg", "jpeg", "png"]
+            )
+        ],
+        blank=True,
+        null=True
+    )
+
+    # Payment Screenshot (Image or PDF)
+    payment_screenshot = models.FileField(
+        upload_to="payments/",
+        validators=[
+            FileExtensionValidator(
+                allowed_extensions=["pdf", "jpg", "jpeg", "png"]
+            )
+        ]
+    )
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="Pending"
+    )
 
     def __str__(self):
         return self.player_name
@@ -198,4 +250,10 @@ class Notice(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title    
+        return self.title  
+
+class RegistrationSettings(models.Model):
+    registration_open = models.BooleanField(default=True)
+
+    def __str__(self):
+        return "Registration Settings"      

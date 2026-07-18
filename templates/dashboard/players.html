@@ -1,0 +1,290 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div class="container-fluid py-3">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+
+        <div>
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+
+    <div>
+
+        <h2 class="fw-bold mb-1">
+            👥 Approved Players
+        </h2>
+
+        <p class="text-muted mb-0">
+            Total Players : {{ players|length }}
+        </p>
+
+    </div>
+
+    <div class="d-flex gap-2 mt-2 mt-md-0">
+
+        <a href="{% url 'export_players_excel' %}"
+           class="btn btn-success">
+
+            <i class="fas fa-file-excel me-2"></i>
+
+            Download Excel
+
+        </a>
+
+        <a href="{% url 'export_players_pdf' %}"
+           class="btn btn-danger">
+
+            <i class="fas fa-file-pdf me-2"></i>
+
+            Download PDF
+
+        </a>
+
+    </div>
+
+</div>
+
+            <p class="text-muted mb-0">
+                Total Players: {{ players|length }}
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="card shadow-sm border-0 rounded-4 mb-4">
+
+        <div class="card-body">
+
+            <form method="GET">
+
+                <div class="row g-3">
+
+                    <div class="col-md-10">
+
+                        <input
+                            type="text"
+                            name="search"
+                            class="form-control"
+                            placeholder="🔍 Search by Player Name or Phone"
+                            value="{{ search }}"
+                        >
+
+                    </div>
+
+                    <div class="col-md-2 d-grid">
+
+                        <button class="btn btn-success">
+
+                            Search
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Desktop View -->
+
+    <div class="d-none d-lg-block">
+
+        <div class="card shadow border-0 rounded-4">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Photo</th>
+<th>Player Name</th>
+<th>Age</th>
+<th>Category</th>
+<th>Phone</th>
+<th>Role</th>
+<th>Village</th>
+
+                            <th class="text-center">Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for player in players %}
+
+                        <tr>
+
+                            <td>{{ forloop.counter }}</td>
+
+                            <td>
+
+                                {% if player.photo %}
+
+                                <a href="{{ player.photo.url }}" target="_blank">
+
+                                    <img src="{{ player.photo.url }}"
+                                         width="60"
+                                         height="60"
+                                         class="rounded-circle"
+                                         style="object-fit:cover;">
+
+                                </a>
+
+                                {% endif %}
+
+                            </td>
+
+                            <td>
+
+                                <strong>{{ player.player_name }}</strong>
+
+                            </td>
+
+                            <td>{{ player.age }}</td>
+                            <td>{{ player.age_category }}</td>
+                            <td>{{ player.phone }}</td>
+
+
+                            
+                            <td>
+
+                                <span class="badge bg-primary">
+
+                                    {{ player.role }}
+
+                                </span>
+
+                            </td>
+
+                            <td>{{ player.address }}</td>
+
+                            <td class="text-center">
+
+    <a href="{% url 'registration_detail' player.id %}"
+       class="btn btn-primary btn-sm">
+
+        <i class="fas fa-eye"></i>
+        View
+
+    </a>
+
+</td>
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+
+                            <td colspan="7" class="text-center py-5">
+
+                                No Approved Players Found
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Mobile View -->
+
+    <div class="d-lg-none">
+
+        {% for player in players %}
+
+        <div class="card shadow-sm border-0 rounded-4 mb-3">
+
+            <div class="card-body">
+
+                <div class="d-flex align-items-center">
+
+                    {% if player.photo %}
+
+                    <a href="{{ player.photo.url }}" target="_blank">
+
+                        <img src="{{ player.photo.url }}"
+                             width="70"
+                             height="70"
+                             class="rounded-circle"
+                             style="object-fit:cover;">
+
+                    </a>
+
+                    {% endif %}
+
+                    <div class="ms-3">
+
+                        <h5 class="mb-1">
+
+                            {{ player.player_name }}
+
+                        </h5>
+
+                        <span class="badge bg-primary">
+
+                            {{ player.role }}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <p><strong>Phone:</strong> {{ player.phone }}</p>
+
+                <p><strong>Village:</strong> {{ player.address }}</p>
+
+                <a href="{% url 'registration_detail' player.id %}"
+                   class="btn btn-primary w-100">
+
+                    👁 View Details
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="alert alert-warning">
+
+            No Approved Players Found
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

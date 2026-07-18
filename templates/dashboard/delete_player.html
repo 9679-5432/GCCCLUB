@@ -1,0 +1,51 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow border-danger">
+
+        <div class="card-header bg-danger text-white">
+
+            <h3>🗑 Delete Player</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <h4>
+
+                Are you sure you want to delete
+
+                <strong>{{ player.player_name }}</strong>?
+
+            </h4>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <button
+                    class="btn btn-danger">
+
+                    Yes, Delete
+
+                </button>
+
+                <a href="{% url 'dashboard_players' %}"
+                   class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
